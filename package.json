@@ -1,0 +1,21 @@
+{
+  "name": "random.js",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "files": [
+    "src/**",
+    "dist/**",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-esm.json"
+  },
+  "author": "FrankKai",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}
