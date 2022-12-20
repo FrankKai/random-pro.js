@@ -12,7 +12,15 @@
     "tsconfig.json"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-esm.json"
+    "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-esm.json",
+    "test": "node test/index.js",
+    "pretest": "npm run build",
+    "alpha": "npm version prerelease --preid=alpha && yarn build && npm publish --tag=alpha",
+    "beta": "npm version prerelease --preid=beta && yarn build && npm publish --tag=beta",
+    "patch": "npm version patch",
+    "patch:publish": "yarn patch && yarn build && npm publish",
+    "minor": "npm version minor",
+    "major": "npm version major"
   },
   "author": "FrankKai",
   "license": "ISC",
