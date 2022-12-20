@@ -11,6 +11,12 @@
     "package.json",
     "tsconfig.json"
   ],
+  "maintainers": [
+    {
+      "name": "FrankKai",
+      "email": "gaokai20100801@gmai.com"
+    }
+  ],
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-esm.json",
     "test": "node test/index.js",
