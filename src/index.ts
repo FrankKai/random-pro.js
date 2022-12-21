@@ -27,5 +27,8 @@ export const random = (value: SupportTypes<any, any>): any => {
       const superSet = new RandomSet(value)
       return superSet.random();
     }
+    default: {
+      return 'Invalid Type'
+    }
   }
 };
