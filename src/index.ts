@@ -9,26 +9,36 @@ const checkType = (value) => {
 };
 
 export const random = (value: SupportTypes<any, any>): any => {
-  const type = checkType(value);
-  switch (type) {
-    case "[object Array]": {
-      const superArray = new RandomArray(value)
-      return superArray.random();
+  try {
+    const type = checkType(value);
+    switch (type) {
+      case "[object Array]": {
+        const superArray = new RandomArray(value);
+        return superArray.random();
+      }
+      case "[object Object]": {
+        const superObject = new RandomObject(value);
+        return superObject.random();
+      }
+      case "[object Map]": {
+        const superMap = new RandomMap(value);
+        return superMap.random();
+      }
+      case "[object Set]": {
+        const superSet = new RandomSet(value);
+        return superSet.random();
+      }
+      default: {
+        const error = new Error();
+        error.name = "Invalid Type";
+        throw error;
+      }
     }
-    case "[object Object]": {
-      const superObject = new RandomObject(value)
-      return superObject.random();
+  } catch (e) {
+    if (e.name === "Invalid Type") {
+      e.message = "Only support Array, Object, Map, Set.";
+      e.cause = "Array, Object, Map, Set are data-collection types.";
     }
-    case "[object Map]": {
-      const superMap = new RandomMap(value)
-      return superMap.random();
-    }
-    case "[object Set]": {
-      const superSet = new RandomSet(value)
-      return superSet.random();
-    }
-    default: {
-      return 'Invalid Type'
-    }
+    throw e;
   }
 };
