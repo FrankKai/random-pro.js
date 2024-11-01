@@ -42,3 +42,5 @@ export const random = (value: SupportTypes<any, any>): any => {
     throw e;
   }
 };
+
+export { SupportTypes } from "./type";
